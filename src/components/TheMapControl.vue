@@ -3,8 +3,8 @@
     <div id="driving_way">
       路径规划策略：
       <select>
-        <option value="0">最短距离</option>
         <option value="1">最少时间</option>
+        <option value="0">最短距离</option>
         <option value="2">优先高速</option>
         <option value="3">避开拥堵</option>
       </select>
@@ -172,7 +172,6 @@ export default {
       let point = this.pointStr.split(',');
       this.start = new BMap.Point(+point[0], +point[1]);
       this.myDrivingRoute();
-
       // ***********************************************************
       // ***********************************************************
       // ***********************************************************
@@ -194,15 +193,13 @@ export default {
       // ***********************************************************
       // ***********************************************************
       // ***********************************************************
-
-
     },
     myDrivingRoute () {
       console.log("myDrivingRoute执行");
       // selectedIndex 代表 select 当前选中的 option 的 value
       let i = document.getElementById('driving_way').childNodes[1].selectedIndex;
+      console.log(i);
       mySearch.call(this, this.start, this.end, this.routePolicy[i]);
-
       function mySearch (start, end, routePolicy) {
         let driving = new BMap.DrivingRoute(this.map, {
           renderOptions: {
@@ -233,40 +230,36 @@ export default {
         pointArr = [],
         // pointNAme 存仓库名，后续用
         pointNAme = [
-          '阜阳市救灾物资储备库',
-          '蚌埠市救灾物资储备库',
-          '六安市救灾物资储备库',
-          '池州市救灾物资储备库',
-          '涡阳县救灾物资储备库',
-          '杜集区救灾物资储备库',
-          '灵璧县救灾物资储备库',
-          '泗县救灾物资储备库',
-          '砀山县救灾物资储备库',
-          '萧县救灾物资储备库',
-          '临泉县救灾物资储备库',
-          '界首市救灾物资储备库',
-          '全椒县救灾物资储备库',
-          '天长市救灾物资储备库',
-          '金寨县救灾物资储备库',
-          '霍邱县救灾物资储备库',
-          '含山县救灾物资储备库',
-          '无为县救灾物资储备库',
-          '枞阳县救灾物资储备库',
-          '石台县救灾物资储备库',
-          '桐城市救灾物资储备库',
-          '望江县救灾物资储备库',
-          '休宁县救灾物资储备库',
-          '祁门县救灾物资储备库',
-          '歙县救灾物资储备库',
-          '淮北市救灾物资储备库',
-          '蚌埠市救灾物资储备库',
-          '寿县救灾物资储备库',
-          '阜南县救灾物资储备库',
-          '铜陵市救灾物资储备库',
-          '宣城市救灾物资储备库',
-          '合肥市救灾物资储备库'
+          '淮北仓储站（淮北市烈山区京台高速与东外环路交叉路口东侧）',
+          '淮北仓储站（安徽省淮北市濉溪县）',
+          '亳州东仓储站（安徽省亳州市谯城区）',
+          '涡阳东仓储站（安徽省亳州市涡阳县）',
+          '宿州仓储站（安徽省宿州市埇桥区宿州(外环南路西)）',
+          '宿州东仓储站（安徽省宿州市埇桥区东(宿州大道东)）',
+          '界首仓储站（安徽省阜阳市界首市）',
+          '阜阳南仓储站（安徽省阜阳市颍州区G105(京珠线)）',
+          '淮南东仓储站（安徽省淮南市大通区东(蚌淮高速公路西)）',
+          '安丰仓储站（安徽省淮南市寿县瓦埠湖）',
+          '郑蒲港仓储站（安徽省马鞍山市和县）',
+          '当涂仓储站（马鞍山市当涂县宁芜高速）',
+          '林头仓储站（安徽省马鞍山市含山县）',
+          '双墩仓储站（安徽省合肥市长丰县）',
+          '肥东仓储站（安徽省合肥市肥东县G3(京台高速)）',
+          '蜀山仓储站（合肥市蜀山区铁笛路(合肥汽车客运西站东北侧约150米)）',
+          '金寨仓储站（安徽省六安市金寨县金寨(红军大道东)）',
+          '霍山仓储站（安徽省六安市霍山县迎宾大道）',
+          '长集仓储站（六安市霍邱县济广高速）',
+          '芜湖仓储站（安徽省芜湖市鸠江区G5011(芜合高速)）',
+          '铜陵南仓储站（安徽省铜陵市郊区大通镇京台高速公路(铜陵)）',
+          '横埠仓储站（安徽省铜陵市枞阳县）',
+          '宿松仓储站（安徽省安庆市宿松县G50(高界高速)）',
+          '怀宁仓储站（安徽省安庆市怀宁县金拱镇沪渝高速公路）',
+          '宣城北高速仓储站（昭亭北路与S32宣铜高速出口交叉口北200米）',
+          '广德东仓储站（安徽省宣城市广德市东(太极大道南)）',
+          '黄山仓储站（安徽省黄山市休宁县黄山(京台高速公路)）',
+          '谭家桥仓储站（安徽省黄山市黄山区谭家桥(205国道西)）',
+          '三阳仓储站（安徽省黄山市歙县三阳(杭徽高速公路北)）'
         ];
-
       // 计算每个仓库的距离，arr 中是每个仓库的信息，
       // 在 TheMapComponent 将仓库信息作为字符串存入 store
       for (let i = 0; arr.length != 0; i++) {
@@ -288,7 +281,6 @@ export default {
         pointArr.push(obj);
       }
       wareArrDistance.sort((a, b) => { return a - b });
-      // 取最近的三个仓库
       let wareResNumSum = 0;
       for (let i = 0; wareResNumSum < this.reourseNum; i++) {
         for (let j = 0; j < pointArr.length; j++) {
@@ -299,15 +291,7 @@ export default {
           }
         }
       }
-      // for (let i = 0; i < 3; i++) {
-      //   for (let j = 0; j < pointArr.length; j++) {
-      //     if (wareArrDistance[i] === pointArr[j].lineDistance) {
-      //       pointArr[j].calcrouteKey = 'result' + i;
-      //       this.label_distance.push(pointArr[j]);
-      //     }
-      //   }
-      // }
-      // 顺便标出三个点，并计划路线
+      // 顺便标点，并计划路线
       this.addOverLayWarePoint();
     },
     addOverLayWarePoint: function () {
@@ -411,4 +395,3 @@ blockquote {
   transform: translate(-50%);
 }
 </style>
-

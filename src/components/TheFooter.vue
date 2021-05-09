@@ -7,7 +7,7 @@
       Copyright ©2020 - 2021 HuiDt. All Rights Reserved.
       <a
         class="graymore"
-        href="http://www.thdong.top/index.php/start-page.html"
+        href="http://hui.thdong.top:8080/yama/about/"
         target="_blank"
         >HuiDT</a
       >

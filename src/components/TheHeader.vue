@@ -41,10 +41,10 @@ header {
 #header_tltle {
   display: inline-block;
   font-size: 1.5em;
-  font-weight: bold;
+  font-weight: bolder;
   text-decoration: none;
   color: #232627;
-  line-height: 9.5vh;
+  line-height: 10vh;
   text-align: center;
   padding: 0 10px;
   border-radius: 10px;
@@ -58,6 +58,7 @@ header {
   cursor: pointer;
 }
 .headerDisplay {
+  font-weight: bold;
   display: inline-block;
   position: fixed;
   line-height: 10vh;
