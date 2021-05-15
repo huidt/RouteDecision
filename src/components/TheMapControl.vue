@@ -165,6 +165,57 @@ export default {
         case 'result11':
           this.temp = this.label_distance[11];
           break;
+        case 'result12':
+          this.temp = this.label_distance[12];
+          break;
+        case 'result13':
+          this.temp = this.label_distance[13];
+          break;
+        case 'result14':
+          this.temp = this.label_distance[14];
+          break;
+        case 'result15':
+          this.temp = this.label_distance[15];
+          break;
+        case 'result16':
+          this.temp = this.label_distance[16];
+          break;
+        case 'result17':
+          this.temp = this.label_distance[17];
+          break;
+        case 'result18':
+          this.temp = this.label_distance[18];
+          break;
+        case 'result19':
+          this.temp = this.label_distance[19];
+          break;
+        case 'result20':
+          this.temp = this.label_distance[20];
+          break;
+        case 'result21':
+          this.temp = this.label_distance[21];
+          break;
+        case 'result22':
+          this.temp = this.label_distance[22];
+          break;
+        case 'result23':
+          this.temp = this.label_distance[23];
+          break;
+        case 'result24':
+          this.temp = this.label_distance[24];
+          break;
+        case 'result25':
+          this.temp = this.label_distance[25];
+          break;
+        case 'result26':
+          this.temp = this.label_distance[26];
+          break;
+        case 'result27':
+          this.temp = this.label_distance[27];
+          break;
+        case 'result28':
+          this.temp = this.label_distance[28];
+          break;
         default:
           console.log(`default switch `);
       }
