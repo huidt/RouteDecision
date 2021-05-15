@@ -162,7 +162,8 @@ export default {
       let url = window.location.href;
       url = url + 'style_config.json';
       let my_style_json;
-      url = 'http://yama.thdong.top:8080/demo/style_config.json';
+      // 生产环境需要下面的文件
+      // url = 'http://yama.thdong.top:8080/demo/style_config.json';
       try {
         await fetch(url)
           .then(function (response) {
