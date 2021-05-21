@@ -34,28 +34,34 @@ export default {
 </script>
 <style >
 header {
+  /* background-color: #b3c0d1; */
+  background-color: #d9ecff;
+  color: #333;
+  /* text-align: center; */
   height: 10vh;
-  background: #495961;
   font-family: "Courier New", Courier, monospace;
 }
 #header_tltle {
   display: inline-block;
   font-size: 1.5em;
-  font-weight: bolder;
+  font-weight: bold;
   text-decoration: none;
-  color: #232627;
+  color: #000;
   line-height: 10vh;
   text-align: center;
   padding: 0 10px;
   border-radius: 10px;
-  background-color: #a2bcc9;
-  border-right: 4px solid rgb(91, 148, 148);
+  background-color: #c6e2ff;
+  border-right: 2px solid rgb(91, 148, 148);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.04);
 }
 #header_tltle:hover {
-  color: #edf1dc;
+  color: #000;
   border-radius: 10px;
-  background-color: #607480;
+  background-color: #a0cfff;
   cursor: pointer;
+  font-weight: bolder;
+  border-right: 2px solid rgb(91, 148, 148);
 }
 .headerDisplay {
   font-weight: bold;
@@ -68,7 +74,8 @@ header {
   margin-left: 33vw;
   border-radius: 2px;
   text-align: center;
-  background-color: #a2bcc9;
+  background-color: #df7777;
   transform: translate(-50%);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.04);
 }
 </style>

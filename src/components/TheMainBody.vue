@@ -22,6 +22,8 @@ export default {
 
 <style>
 main[name="mainbody"] {
+  background-color: #d3dce6;
+  color: #333;
   height: 87vh;
   display: flex;
   flex-direction: row;
@@ -34,8 +36,9 @@ main[name="mainbody"] {
 .mainleft {
   width: 20vw;
   /* width: 60vw; */
-  background-color: #7caac0;
+  background-color: #dadee0;
   border-right: 1px #d6dfea solid;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.04);
 }
 
 .main_midea {

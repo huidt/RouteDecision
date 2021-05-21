@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
+// 安装插件 https://cn.vuejs.org/v2/api/#Vue-use
 Vue.use(Vuex);
 
 const state = {
@@ -40,6 +41,7 @@ const state = {
             154,    // 三阳仓储站
         ],
 }
+// 其中的方法只能进行同步操作，且方法名只能全局唯一
 const mutations = {
     receiveMap (state, temp) {
         state.map = temp.map;
@@ -52,9 +54,15 @@ const mutations = {
         state.wareArr = temp.wareArr;
     },
 }
+
+// 创建并导出store对象
 export default new Vuex.Store({
     state,
     mutations,
+    // 操作行为处理模块。负责处理Vue Components接收到的所有交互行为。
+    // 包含同步、异步操作，支持多个同名方法，按照注册的顺序依次触发。
+    // 向后台API请求的操作就在这个模块中进行，包括触发其他action以及提交mutation的操作。
+    // 该模块提供了Promise的封装，以支持action的链式触发。
     actions: {},
     modules: {}
 })

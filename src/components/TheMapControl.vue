@@ -2,22 +2,43 @@
   <div name="mapcontrol">
     <div id="driving_way">
       路径规划策略：
-      <select>
+      <el-select clearable v-model="value" placeholder="请选择">
+        <el-option
+          v-for="item in option"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value"
+          :disabled="item.disabled"
+        >
+        </el-option>
+      </el-select>
+      <!-- <select>
         <option value="1">最少时间</option>
         <option value="0">最短距离</option>
         <option value="2">优先高速</option>
         <option value="3">避开拥堵</option>
-      </select>
+      </select> -->
     </div>
     <hr />
     <div class="huihuihui">
       物资需求量：{{ reourseNum }}
-      <input type="text" placeholder="请输入合法整数" v-model="reourseNum" />
+      <el-input
+        type="text"
+        placeholder="请输入合法内容"
+        v-model="reourseNum"
+        clearable
+      >
+      </el-input>
+      <!-- <input type="text" placeholder="请输入合法整数" v-model="reourseNum" /> -->
       <br />
       事故点坐标：
-      <input type="text" placeholder="请确保输入合法" v-model="pointStr" />
+      <el-input type="text" placeholder="请确保输入合法" v-model="pointStr">
+      </el-input>
+      <!-- <input type="text" placeholder="请确保输入合法" v-model="pointStr" /> -->
       <br />
-      <button @click="calcWarePoint">计算优选仓库</button>
+      <el-button type="primary" plain @click="calcWarePoint"
+        >计算优选仓库</el-button
+      >
     </div>
 
     <hr />
@@ -37,24 +58,62 @@
           <br />
           行车时间：{{ item.time }}
         </blockquote>
-        <input
+        <el-button
+          type="success"
+          class="calcroute"
+          v-bind:id="item.calcrouteKey"
+          @click="calcroute"
+          plain
+          >计算路线
+        </el-button>
+        <!-- <input
           type="button"
           class="calcroute"
           value="计算路线"
           v-bind:id="item.calcrouteKey"
           @click="calcroute"
-        />
+        /> -->
       </ol>
     </ul>
+
+    <TheDemo></TheDemo>
   </div>
 </template> 
 
 <script>
 import BMap from 'BaiduMap'
+import TheDemo from './TheDemo'
 
 export default {
+  components: {
+    TheDemo
+  },
   data: function () {
     return {
+      option: [
+        {
+          selected: 'selected',
+          value: '2',
+          label: '优先高速'
+        },
+        {
+          value: '1',
+          label: '最少时间'
+        },
+        {
+          value: '0',
+          label: '最短距离'
+        },
+        {
+          value: '3',
+          label: '避开拥堵',
+          disabled: true
+        }],
+      form_staus: 1,
+      value: '',
+      // **********************************
+      // **********************************
+      // **********************************
       map: null,
       temp: null,
       reourseNum: 1000,
@@ -128,7 +187,9 @@ export default {
   },
   methods: {
     calcroute (e) {
-      switch (e.target.id) {
+      let result_id = e.srcElement.parentElement.id || e.target.id;
+      console.log(result_id);
+      switch (result_id) {
         case 'result0':
           this.temp = this.label_distance[0];
           break;
@@ -244,6 +305,17 @@ export default {
       // ***********************************************************
       // ***********************************************************
       // ***********************************************************
+      setTimeout(() => {
+        this.element_UI_open();
+      }, 1000);
+    },
+    element_UI_open () {
+      this.$notify({
+        title: '成功',
+        message: '规划路线成功',
+        type: 'success',
+        duration: 700
+      });
     },
     myDrivingRoute () {
       console.log("myDrivingRoute执行");
@@ -263,13 +335,39 @@ export default {
         driving.search(end, start);
       }
     },
+    async element_UI_open2 () {
+      function mytemp () {
+        console.log(this);
+        this.$confirm('此操作将开始计算优选仓库，请确认输入合法?', '提示', {
+          confirmButtonText: '开始计算',
+          cancelButtonText: '放弃计算',
+          type: 'warning'
+        }).then(() => {
+
+          this.clicked = true;
+          this.$message({
+            type: 'success',
+            message: '计算成功!'
+          });
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消计算'
+          });
+        });
+      }
+      await mytemp.call(this);
+    },
     /**
      * 计算优选仓库
      * 
      */
     calcWarePoint: function () {
+
+      this.element_UI_open2();
+
       // clicked 为 true 显示列表
-      this.clicked = true;
+      // this.clicked = true;
       // 每次计算前都初始化
       this.label_distance = [];
       // 从 VueX 中取得仓库坐标（字符串）
@@ -344,6 +442,8 @@ export default {
       }
       // 顺便标点，并计划路线
       this.addOverLayWarePoint();
+
+      // this.$message('这是一条消息提示');
     },
     addOverLayWarePoint: function () {
       for (let i = 0; this.markerArr.length !== 0; i++) {
@@ -378,6 +478,7 @@ div[name="mapcontrol"] {
   position: relative;
   overflow: scroll;
   overflow-x: hidden;
+  background-color: #c6e2ff;
   height: 87vh;
   padding-top: 15px;
 }
@@ -394,9 +495,9 @@ div[name="mapcontrol"] {
   display: inline-block;
   transform: translate(-50%);
 }
-button {
+/* button {
   font-size: 1em;
-}
+} */
 hr {
   margin: 10px 0;
 }
@@ -430,11 +531,12 @@ select {
 blockquote {
   border-radius: 2px;
   border: 2px solid #cfe2eb;
-  background-color: #a4c2d1;
+  background-color: #f2f6fc;
   position: relative;
   left: 50%;
   transform: translate(-50%);
   display: block;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
 }
 .ulol {
   position: relative;
