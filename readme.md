@@ -37,11 +37,11 @@
 
 ## 2.1. 纯Vue
 
-![](src\assets\old.PNG)
+![](./src/assets/old.PNG)
 
 ## 2.2. 引入ElementUI
 
-![](src\assets\new.PNG)
+![](./src/assets/new.PNG)
 
 # 3. 地图基操
 
