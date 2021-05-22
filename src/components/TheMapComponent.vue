@@ -164,7 +164,7 @@ export default {
       let my_style_json;
       // 生产环境需要下面的文件
       // yama
-      url = 'http://yama.thdong.top:8080/demo/style_config.json';
+      // url = 'http://yama.thdong.top:8080/demo/style_config.json';
       // hui
       // url = 'http://hui.thdong.top:8080/demo/style_config.json';
       try {
