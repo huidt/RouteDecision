@@ -15,9 +15,10 @@
   - [2.5. MapVGL](#25-mapvgl)
   - [2.6. Web服务API](#26-web服务api)
   - [2.7. 杂](#27-杂)
-- [3. 结合PSO算法](#3-结合pso算法)
-  - [3.1. PSO简介](#31-pso简介)
-- [4. 仓储站信息](#4-仓储站信息)
+- [3. AK收集](#3-ak收集)
+- [4. 结合PSO算法](#4-结合pso算法)
+  - [4.1. PSO简介](#41-pso简介)
+- [5. 仓储站信息](#5-仓储站信息)
 
 # 1. 开始
 
@@ -186,15 +187,23 @@ https://lbsyun.baidu.com/index.php?title=webapi
 
 地图、覆盖物拖拽： https://mapopen-pub-jsapi.bj.bcebos.com/jsapi/reference/jsapi_reference.html#a3b2
 
-# 3. 结合PSO算法
+# 3. AK收集
 
-## 3.1. PSO简介
+```
+fjEOTea6oQGEcK1GSUHruG4efO9fccei
+CWmiAPiwuHW6sGdMbAReZdqU
+LnP4INwY2AY2VSZFwcRMbNhPxUeBB7sA
+```
+
+# 4. 结合PSO算法
+
+## 4.1. PSO简介
 
 已知事故点坐标、仓库坐标、最短直线距离（行车距离可得）
 
 进一步考虑仓库物资存储量和事故点需求量，则需要结合PSO算法，进行优化选择。
 
-# 4. 仓储站信息
+# 5. 仓储站信息
 
 |       name       |                       addr                        |         posi         |  res  |
 | :--------------: | :-----------------------------------------------: | :------------------: | :---: |

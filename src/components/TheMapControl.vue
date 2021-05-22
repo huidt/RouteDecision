@@ -2,7 +2,12 @@
   <div name="mapcontrol">
     <div id="driving_way">
       路径规划策略：
-      <el-select clearable v-model="value" placeholder="请选择">
+      <el-select
+        clearable
+        id="driving_way_input"
+        v-model="value"
+        placeholder="请选择"
+      >
         <el-option
           v-for="item in option"
           :key="item.value"
@@ -36,7 +41,12 @@
       </el-input>
       <!-- <input type="text" placeholder="请确保输入合法" v-model="pointStr" /> -->
       <br />
-      <el-button type="primary" plain @click="calcWarePoint"
+      <el-button
+        id="calcWarePointButton"
+        class="calcWareButton"
+        type="primary"
+        plain
+        @click="calcWarePoint"
         >计算优选仓库</el-button
       >
     </div>
@@ -50,12 +60,145 @@
         v-bind:key="item.distance"
       >
         <blockquote>
-          {{ item.name }}：存量 {{ item.wareResNum }}
+          <svg
+            t="1621652305879"
+            class="icon"
+            viewBox="0 0 1024 1024"
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+            p-id="2233"
+            width="16"
+            height="16"
+          >
+            <path
+              d="M512 295.6L201.9 485.2l8.5 354.7h76.5L280 508.6h464l-7 331.3h76.6l8.5-354.7z"
+              fill="#1296db"
+              p-id="2234"
+            ></path>
+            <path
+              d="M155.5 462.5L512 244.6l356.4 217.9 27.8-43.6L512 184.1 127.8 418.9z"
+              fill="#1296db"
+              p-id="2235"
+            ></path>
+            <path
+              d="M676.9 839.6H347c-16 0-29-13-29-29s13-29 29-29h330c16 0 29 13 29 29s-13 29-29.1 29z"
+              fill="#1296db"
+              p-id="2236"
+            ></path>
+            <path
+              d="M697.5 733.8H326.4c-12 0-21.8-9.7-21.8-21.8s9.7-21.8 21.8-21.8h371.2c12 0 21.8 9.7 21.8 21.8s-9.8 21.8-21.9 21.8z"
+              fill="#1296db"
+              p-id="2237"
+            ></path>
+            <path
+              d="M676.9 642.4H347c-16 0-29-13-29-29s13-29 29-29h330c16 0 29 13 29 29s-13 29-29.1 29z"
+              fill="#1296db"
+              p-id="2238"
+            ></path>
+          </svg>
+          {{ item.name }}：
+          <svg
+            t="1621652015747"
+            class="icon"
+            viewBox="0 0 1024 1024"
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+            p-id="801"
+            id="mx_n_1621652015748"
+            width="16"
+            height="16"
+          >
+            <path
+              d="M790.272 190.72h-28.586667v-53.504c0-30.378667-23.210667-53.504-53.504-53.504H583.168c-30.378667 0-53.504 23.210667-53.504 53.504v53.504H301.141333L129.792 420.949333v430.165334c0 50.005333 39.253333 89.258667 89.258667 89.258666H790.186667c50.005333 0 89.258667-39.253333 89.258666-89.258666V279.978667c0-48.213333-39.253333-89.258667-89.173333-89.258667z m-189.269333-35.669333h89.258666v35.669333H601.002667v-35.669333zM808.106667 851.114667"
+              fill="#3A78E9"
+              p-id="802"
+            ></path>
+            <path
+              d="M529.664 395.946667l-25.002667-23.210667-25.002666 25.002667c-19.626667 19.626667-123.136 123.136-123.136 196.352 0 82.090667 66.048 149.930667 148.138666 149.930666S652.8 676.181333 652.8 594.090667c0-74.922667-103.509333-178.432-123.136-198.144z m-25.002667 274.944"
+              fill="#BDE0FF"
+              p-id="803"
+            ></path></svg
+          >存量 {{ item.wareResNum }}
           <br />
+          <svg
+            t="1621652346827"
+            class="icon"
+            viewBox="0 0 1024 1024"
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+            p-id="2821"
+            width="16"
+            height="16"
+          >
+            <path
+              d="M171.240049 718.68079l137.569214 137.58343 56.835973-56.835974-137.583429-137.583429 74.86199-74.86199 136.275548 136.275548 56.835973-56.835974-136.275548-136.275548 73.411948-73.397731 188.44864 188.44864 56.835973-56.835973-188.44864-188.44864 74.193833-74.193834 135.792201 135.777985 56.835973-56.835974-135.7922-135.777984 72.075634-72.075634L874.453721 378.148297l56.835974-56.835973L749.949105 139.971734l83.135761-83.135761L776.248893 0 7.925477 768.323416l56.835973 56.835974 106.478599-106.4786zM860.138107 868.063584v35.11377H163.861893v-35.11377H7.925477v155.936416h155.936416V988.872013h696.276214v35.127987h155.936416V868.063584H860.138107z"
+              p-id="2822"
+              fill="#1296db"
+            ></path>
+          </svg>
           直线距离：{{ item.lineDistance }}米
           <br />
+          <svg
+            t="1621652388821"
+            class="icon"
+            viewBox="0 0 1024 1024"
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+            p-id="4902"
+            width="16"
+            height="16"
+          >
+            <path
+              d="M256.948148 786.962963m-66.37037 0a66.37037 66.37037 0 1 0 132.740741 0 66.37037 66.37037 0 1 0-132.740741 0Z"
+              p-id="4903"
+              fill="#1296db"
+            ></path>
+            <path
+              d="M786.488889 786.962963m-66.37037 0a66.37037 66.37037 0 1 0 132.74074 0 66.37037 66.37037 0 1 0-132.74074 0Z"
+              p-id="4904"
+              fill="#1296db"
+            ></path>
+            <path
+              d="M594.962963 170.666667H199.111111c-62.862222 0-113.777778 50.915556-113.777778 113.777777v471.703704c0 11.757037 9.576296 21.333333 21.333334 21.333333h55.94074c4.740741-47.881481 45.226667-85.333333 94.340741-85.333333s89.6 37.451852 94.340741 85.333333h243.674074c11.757037 0 21.333333-9.576296 21.333333-21.333333v-564.148148c0-11.757037-9.576296-21.333333-21.333333-21.333333zM748.562963 360.296296H656.118519c-11.757037 0-21.333333 9.576296-21.333334 21.333334v374.518518c0 11.757037 9.576296 21.333333 21.333334 21.333333h36.029629c4.740741-47.881481 45.226667-85.333333 94.340741-85.333333s89.6 37.451852 94.340741 85.333333h36.029629c11.757037 0 21.333333-9.576296 21.333334-21.333333V549.925926c0-104.296296-85.333333-189.62963-189.62963-189.62963zM872.296296 545.185185H701.62963V412.444444h37.925926c73.007407 0 132.740741 59.733333 132.74074 132.740741z"
+              p-id="4905"
+              fill="#1296db"
+            ></path>
+          </svg>
+
           行车距离：{{ item.distance }}
           <br />
+          <svg
+            t="1621652417648"
+            class="icon"
+            viewBox="0 0 1024 1024"
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+            p-id="6202"
+            width="16"
+            height="16"
+          >
+            <path
+              d="M512 512m-477.866667 0a477.866667 477.866667 0 1 0 955.733334 0 477.866667 477.866667 0 1 0-955.733334 0Z"
+              fill="#35A4EF"
+              p-id="6203"
+            ></path>
+            <path
+              d="M512.375467 204.8c26.589867 0 48.128 21.538133 48.128 48.128v279.210667a48.128 48.128 0 0 1-96.256 0V252.928c0-26.589867 21.572267-48.128 48.128-48.128z"
+              fill="#38D8FF"
+              p-id="6204"
+            ></path>
+            <path
+              d="M731.477333 761.4464a31.1296 31.1296 0 0 1-45.056 0l-202.752-212.6848a34.235733 34.235733 0 0 1 0-47.274667 31.1296 31.1296 0 0 1 45.056 0l202.752 212.6848c12.629333 13.243733 12.629333 34.030933 0 47.274667z"
+              fill="#38D8FF"
+              p-id="6205"
+            ></path>
+            <path
+              d="M448.273067 512a68.266667 63.726933 90 1 0 127.453866 0 68.266667 63.726933 90 1 0-127.453866 0Z"
+              fill="#5FE3FF"
+              p-id="6206"
+            ></path>
+          </svg>
+
           行车时间：{{ item.time }}
         </blockquote>
         <el-button
@@ -157,6 +300,19 @@ export default {
       // 由于使用字符串转换，两个组件中 point 是深拷贝关系
       // 但二者都同从 VueX 得到更新，只需要关注如何触发 VueX 中的 point 更新即可
       // this.point = new BMap.Point(+arrPointStr[0], +arrPointStr[1]);
+      let btn = document.getElementById('calcWarePointButton');
+      btn.addEventListener('click', () => {
+        let tempInput = document.getElementById('driving_way_input');
+        if (tempInput.value == "") {
+          this.$message(
+            {
+              showClose: true,
+              duration: 2000,
+              message: '请先选择路径规划策略！'
+            }
+          )
+        }
+      })
     })
   },
   watch: {
@@ -337,22 +493,21 @@ export default {
     },
     async element_UI_open2 () {
       function mytemp () {
-        console.log(this);
-        this.$confirm('此操作将开始计算优选仓库，请确认输入合法?', '提示', {
+        this.$confirm('此操作将开始计算优选仓库，请确认输入合法？', '提示', {
           confirmButtonText: '开始计算',
           cancelButtonText: '放弃计算',
           type: 'warning'
         }).then(() => {
-
+          // clicked 为 true 显示列表
           this.clicked = true;
           this.$message({
             type: 'success',
-            message: '计算成功!'
+            message: '计算成功！'
           });
         }).catch(() => {
           this.$message({
             type: 'info',
-            message: '已取消计算'
+            message: '已取消计算！'
           });
         });
       }
@@ -360,14 +515,18 @@ export default {
     },
     /**
      * 计算优选仓库
-     * 
      */
     calcWarePoint: function () {
-
+      let tempInput = document.getElementById('driving_way_input');
+      if (tempInput.value !== "") {
+        // let btn = document.getElementById('calcWarePointButton');
+        // btn.removeEventListener('mouseover', this);
+        document.getElementById('calcWarePointButton').disabled = false;
+        // this.$message('请先选择路径规划策略！');
+      } else {
+        return undefined;
+      }
       this.element_UI_open2();
-
-      // clicked 为 true 显示列表
-      // this.clicked = true;
       // 每次计算前都初始化
       this.label_distance = [];
       // 从 VueX 中取得仓库坐标（字符串）
@@ -442,8 +601,6 @@ export default {
       }
       // 顺便标点，并计划路线
       this.addOverLayWarePoint();
-
-      // this.$message('这是一条消息提示');
     },
     addOverLayWarePoint: function () {
       for (let i = 0; this.markerArr.length !== 0; i++) {
@@ -476,17 +633,19 @@ div[name="mapcontrol"] {
   font-weight: bold;
   border-radius: 8px;
   position: relative;
-  overflow: scroll;
+  /* overflow: scroll; */
   overflow-x: hidden;
   background-color: #c6e2ff;
   height: 87vh;
   padding-top: 15px;
+  /* text-align: center; */
 }
 #driving_way {
   position: relative;
   left: 50%;
   display: inline-block;
   transform: translate(-50%);
+  /* text-align: center; */
 }
 .huihuihui {
   margin-left: 2px;
@@ -494,6 +653,8 @@ div[name="mapcontrol"] {
   left: 50%;
   display: inline-block;
   transform: translate(-50%);
+  /* text-align: center; */
+  margin-right: 2px;
 }
 /* button {
   font-size: 1em;
@@ -546,5 +707,9 @@ blockquote {
   position: relative;
   left: 50%;
   transform: translate(-50%);
+}
+.calcWareButton {
+}
+#calcWarePointButton > span {
 }
 </style>
