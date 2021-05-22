@@ -1,23 +1,26 @@
 - [1. 开始](#1-开始)
-- [2. 地图基操](#2-地图基操)
-  - [2.1. 自定义Icon](#21-自定义icon)
-  - [2.2. 图区功能](#22-图区功能)
-    - [2.2.1. 地图标点](#221-地图标点)
-    - [2.2.2. 地址解析](#222-地址解析)
-    - [2.2.3. 反向地址解析](#223-反向地址解析)
-  - [2.3. 检索功能](#23-检索功能)
-    - [2.3.1. POI检索](#231-poi检索)
-    - [2.3.2. 公交、地铁线路查询](#232-公交地铁线路查询)
-    - [2.3.3. 路线规划](#233-路线规划)
-  - [2.4. 信息提示](#24-信息提示)
-    - [2.4.1. POI详情页提示](#241-poi详情页提示)
-    - [2.4.2. 全景服务](#242-全景服务)
-  - [2.5. MapVGL](#25-mapvgl)
-  - [2.6. Web服务API](#26-web服务api)
-  - [2.7. 杂](#27-杂)
-- [3. 结合PSO算法](#3-结合pso算法)
-  - [3.1. PSO简介](#31-pso简介)
-- [4. 仓储站信息](#4-仓储站信息)
+- [2. 界面](#2-界面)
+  - [2.1. 纯Vue](#21-纯vue)
+  - [2.2. 引入ElementUI](#22-引入elementui)
+- [3. 地图基操](#3-地图基操)
+  - [3.1. 自定义Icon](#31-自定义icon)
+  - [3.2. 图区功能](#32-图区功能)
+    - [3.2.1. 地图标点](#321-地图标点)
+    - [3.2.2. 地址解析](#322-地址解析)
+    - [3.2.3. 反向地址解析](#323-反向地址解析)
+  - [3.3. 检索功能](#33-检索功能)
+    - [3.3.1. POI检索](#331-poi检索)
+    - [3.3.2. 公交、地铁线路查询](#332-公交地铁线路查询)
+    - [3.3.3. 路线规划](#333-路线规划)
+  - [3.4. 信息提示](#34-信息提示)
+    - [3.4.1. POI详情页提示](#341-poi详情页提示)
+    - [3.4.2. 全景服务](#342-全景服务)
+  - [3.5. MapVGL](#35-mapvgl)
+  - [3.6. Web服务API](#36-web服务api)
+  - [3.7. 杂](#37-杂)
+- [4. 结合PSO算法](#4-结合pso算法)
+  - [4.1. PSO简介](#41-pso简介)
+- [5. 仓储站信息](#5-仓储站信息)
 
 # 1. 开始
 
@@ -28,7 +31,19 @@
     点击左上角大字刷新缓存
 ```
 
-# 2. 地图基操
+# 2. 界面
+
+[HuiDT_GP](http://hui.thdong.top:8080/demo/)
+
+## 2.1. 纯Vue
+
+![](src\assets\old.PNG)
+
+## 2.2. 引入ElementUI
+
+![](src\assets\new.PNG)
+
+# 3. 地图基操
 
 支持异步加载，在引用脚本的时候添加callback参数，当脚本加载完成后callback函数会被立刻调用。
 
@@ -64,7 +79,7 @@
 
 在组件中import即可使用。
 
-## 2.1. 自定义Icon
+## 3.1. 自定义Icon
 
 ```js
     let myIcon = new BMap.Icon("https://ythdong.gitee.io/blog_image/Vue/warehouse.png",
@@ -75,9 +90,9 @@
     let marker = new BMap.Marker(point, { icon: myIcon });
     this.map.addOverlay(marker);
 ```
-## 2.2. 图区功能
+## 3.2. 图区功能
 
-### 2.2.1. 地图标点
+### 3.2.1. 地图标点
 
 https://lbsyun.baidu.com/index.php?title=uri/api/web
 
@@ -95,7 +110,7 @@ https://lbsyun.baidu.com/index.php?title=uri/api/web
 |    zoom    |    展现地图的级别，默认为视觉最优级别。    |   可选   |                        |
 |    src     | 调用来源，规则：webapp.huidt.RouteDecision |   必选   |     必选但意义不大     |
 
-### 2.2.2. 地址解析
+### 3.2.2. 地址解析
 
 通过地址解析
 
@@ -109,7 +124,7 @@ https://lbsyun.baidu.com/index.php?title=uri/api/web
 |    zoom    |     展现地图的级别，默认为视觉最优级别。     |   可选   |                            |
 |    src     | 调用来源，规则：webapp.companyName.appName。 |   必选   | 此参数不传值，不保证服务。 |
 
-### 2.2.3. 反向地址解析
+### 3.2.3. 反向地址解析
 
 通过经纬度解析
 
@@ -123,47 +138,47 @@ https://lbsyun.baidu.com/index.php?title=uri/api/web
 |    zoom    | 展现地图的级别，默认为视觉最优级别。 |   可选   |                      |
 |    src     |                                      | 调用来源 |         必选         |  |
 
-## 2.3. 检索功能
+## 3.3. 检索功能
 
-### 2.3.1. POI检索
+### 3.3.1. POI检索
 
 周边检索
 
-### 2.3.2. 公交、地铁线路查询
+### 3.3.2. 公交、地铁线路查询
 
 例子：`http://api.map.baidu.com/line?region=北京&name=518&output=html&src=webapp.baidu.openAPIdemo`
 
-### 2.3.3. 路线规划
+### 3.3.3. 路线规划
 
 例子：`http://api.map.baidu.com/direction?origin=latlng:34.264642646862,108.95108518068|name:我家&destination=大雁塔&mode=driving&region=西安&output=html&src=webapp.baidu.openAPIdemo`
 
 //调起百度PC或Web地图，展示"西安市"从（lat:34.264642646862,lng:108.95108518068 ）"我家"到"大雁塔"的驾车路线。
 
-## 2.4. 信息提示
+## 3.4. 信息提示
 
-### 2.4.1. POI详情页提示
+### 3.4.1. POI详情页提示
 
 `http://api.map.baidu.com/place/detail?uid=2fd2beabe34a80517adbd220&output=html&src=webapp.baidu.openAPIdemo`
 
-### 2.4.2. 全景服务
+### 3.4.2. 全景服务
 
 需要 flash
 
 http://api.map.baidu.com/pano/?x=120.320032&y=31.589666&lc=0&ak=***AKAKAKAK***&src=webapp.baidu.openAPIdemo
 
-## 2.5. MapVGL
+## 3.5. MapVGL
 
 一款基于WebGL的地理信息可视化库，酷炫的效果，装逼用
 
 https://lbsyun.baidu.com/solutions/mapvdata
 
-## 2.6. Web服务API
+## 3.6. Web服务API
 
 https://lbsyun.baidu.com/index.php?title=webapi
 
 货车路径规划： http://lbsyun.baidu.com/index.php?title=webapi/direction-api-truck
 
-## 2.7. 杂
+## 3.7. 杂
 
 开启滚动缩放：`map.enableScrollWheelZoom(true);`
 
@@ -186,15 +201,15 @@ https://lbsyun.baidu.com/index.php?title=webapi
 
 地图、覆盖物拖拽： https://mapopen-pub-jsapi.bj.bcebos.com/jsapi/reference/jsapi_reference.html#a3b2
 
-# 3. 结合PSO算法
+# 4. 结合PSO算法
 
-## 3.1. PSO简介
+## 4.1. PSO简介
 
 已知事故点坐标、仓库坐标、最短直线距离（行车距离可得）
 
 进一步考虑仓库物资存储量和事故点需求量，则需要结合PSO算法，进行优化选择。
 
-# 4. 仓储站信息
+# 5. 仓储站信息
 
 |       name       |                       addr                        |         posi         |  res  |
 | :--------------: | :-----------------------------------------------: | :------------------: | :---: |
