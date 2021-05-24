@@ -233,6 +233,7 @@ export default {
   },
   data: function () {
     return {
+      ruleMarker: false,
       option: [
         {
           selected: 'selected',
@@ -312,6 +313,9 @@ export default {
             }
           )
         }
+        if (this.ruleMarker == true) {
+          this.$message("请先确事故点坐标保输入合法！");
+        }
       })
     })
   },
@@ -319,7 +323,22 @@ export default {
     // 由更新后的 pointStr 更新 Vuex
     pointStr: function () {
       console.log('输入事故点坐标');
-
+      if (this.pointStr) {
+        let temp = this.pointStr.split('');
+        for (let i = 0; i < temp.length; i++) {
+          let reg = new RegExp(/[0-9]/ig);
+          if (!reg.test(temp[i])) {
+            if (temp[i] == ' ' || temp[i] == ',' || temp[i] == '.') {
+              // nothing
+            } else {
+              this.ruleMarker = true;
+            }
+          }
+        }
+        if (this.ruleMarker) {
+          this.$message('请输入合法值');
+        }
+      }
       // 延时防抖
       clearTimeout(timer);
       let timer = setTimeout(() => {
@@ -516,6 +535,21 @@ export default {
     /**
      * 计算优选仓库
      */
+    checkRule: function () {
+      let str = new String(this.reourseNum);
+      console.log(str);
+      str = str.split('');
+      for (let i = 0; i < str.length; i++) {
+        let reg = new RegExp(/[0-9]/ig);
+        if (!reg.test(str[i])) {
+          if (str[i] == ' ' || str[i] == ',' || str[i] == '.') {
+            // nothing
+          } else {
+            return true;
+          }
+        }
+      }
+    },
     calcWarePoint: function () {
       let tempInput = document.getElementById('driving_way_input');
       if (tempInput.value !== "") {
@@ -526,6 +560,17 @@ export default {
       } else {
         return undefined;
       }
+      if (this.ruleMarker == true) {
+        document.getElementById('calcWarePointButton').disabled = false;
+        return undefined;
+      }
+
+      if (this.checkRule()) {
+        document.getElementById('calcWarePointButton').disabled = false;
+        this.$message("请先确保物资需求量输入合法！");
+        return undefined;
+      }
+
       this.element_UI_open2();
       // 每次计算前都初始化
       this.label_distance = [];
