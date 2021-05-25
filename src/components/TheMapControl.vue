@@ -636,6 +636,15 @@ export default {
       wareArrDistance.sort((a, b) => { return a - b });
       let wareResNumSum = 0;
       for (let i = 0; wareResNumSum < this.reourseNum; i++) {
+        if (i >= 29) {
+          this.$message({
+            showClose: true,
+            duration: 0,
+            message: '抱歉，调度所有仓储站也不能满足物资需求！\n 此操作将调度所有仓储站！'
+          }
+          );
+          return undefined;
+        }
         for (let j = 0; j < pointArr.length; j++) {
           if (wareArrDistance[i] === pointArr[j].lineDistance) {
             pointArr[j].calcrouteKey = 'result' + i;
