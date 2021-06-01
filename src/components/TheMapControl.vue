@@ -358,6 +358,7 @@ export default {
       this.pointStr = this.$store.state.markerPos;
       // let arr = this.pointStr.split(',');
       // this.point = new BMap.Point(+arr[0], +arr[1]);
+      this.ruleMarker = false;
     }
   },
   methods: {
