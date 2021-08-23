@@ -1,7 +1,5 @@
 - [1. 开始](#1-开始)
 - [2. 界面](#2-界面)
-  - [2.1. 纯 Vue](#21-纯-vue)
-  - [2.2. 引入 ElementUI](#22-引入-elementui)
 - [3. 地图基操](#3-地图基操)
   - [3.1. 自定义 Icon](#31-自定义-icon)
   - [3.2. 图区功能](#32-图区功能)
@@ -33,15 +31,7 @@
 
 # 2. 界面
 
-[HuiDT_GP](http://hui.thdong.top:8080/demo/)
-
-## 2.1. 纯 Vue
-
-![](./src/assets/old.PNG)
-
-## 2.2. 引入 ElementUI
-
-![](./src/assets/new.PNG)
+线上地址：[HuiDT_GP](http://yama.thdong.top:8080/gp/)
 
 # 3. 地图基操
 
@@ -65,7 +55,7 @@
 </script>
 ```
 
-如果在 vue 项目中引入有几种方式，其中一种是在 index.html 中先用 script 标签引入，然后在 vue.config.js 文件中配置如下：
+在 vue 项目中引入有几种方式，其中一种是在 index.html 中先用 script 标签引入，然后在 vue.config.js 文件中配置如下：
 
 ```js
 module.exports = {

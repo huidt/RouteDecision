@@ -10,7 +10,6 @@
 <script>
 import TheHeader from "./components/TheHeader";
 import TheMainBody from './components/TheMainBody';
-// import TheFooter from './components/TheFooter';
 import TheTable from './components/TheTable';
 export default {
   name: 'App',
