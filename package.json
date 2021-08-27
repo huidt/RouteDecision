@@ -11,6 +11,7 @@
   "dependencies": {
     "core-js": "^3.6.5",
     "element-ui": "^2.15.1",
+    "lodash": "^4.17.21",
     "serve": "^11.3.2",
     "vue": "^2.6.11",
     "vuex": "^3.6.2"

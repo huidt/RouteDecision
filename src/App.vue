@@ -2,7 +2,6 @@
   <div id="app">
     <the-header></the-header>
     <the-main-body></the-main-body>
-    <!-- <the-footer></the-footer> -->
     <TheTable></TheTable>
   </div>
 </template>
@@ -10,7 +9,7 @@
 <script>
 import TheHeader from "./components/TheHeader";
 import TheMainBody from './components/TheMainBody';
-import TheTable from './components/TheTable';
+import TheTable from './pages/Table/index.vue';
 export default {
   name: 'App',
   data () {
@@ -18,9 +17,7 @@ export default {
     }
   },
   components: {
-    TheHeader, TheMainBody,
-    // TheFooter,
-    TheTable
+    TheHeader, TheMainBody, TheTable
   },
   methods: {
 

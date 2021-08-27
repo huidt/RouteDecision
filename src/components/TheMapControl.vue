@@ -219,17 +219,17 @@
       </ol>
     </ul>
 
-    <TheDemo></TheDemo>
+    <TheRefresh></TheRefresh>
   </div>
 </template> 
 
 <script>
 import BMap from 'BaiduMap'
-import TheDemo from './TheDemo'
+import TheRefresh from './TheRefresh.vue'
 
 export default {
   components: {
-    TheDemo
+    TheRefresh
   },
   data: function () {
     return {
