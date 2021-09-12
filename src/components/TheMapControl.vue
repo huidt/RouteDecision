@@ -322,7 +322,6 @@ export default {
   watch: {
     // 由更新后的 pointStr 更新 Vuex
     pointStr: function () {
-      console.log('输入事故点坐标');
       if (this.pointStr) {
         let temp = this.pointStr.split('');
         for (let i = 0; i < temp.length; i++) {
@@ -364,7 +363,6 @@ export default {
   methods: {
     calcroute (e) {
       let result_id = e.srcElement.parentElement.id || e.target.id;
-      console.log(result_id);
       switch (result_id) {
         case 'result0':
           this.temp = this.label_distance[0];
@@ -454,7 +452,7 @@ export default {
           this.temp = this.label_distance[28];
           break;
         default:
-          console.log(`default switch `);
+            this.$$notify('default switch');
       }
       this.end = new BMap.Point(this.temp.lng, this.temp.lat);
       let point = this.pointStr.split(',');
@@ -494,10 +492,8 @@ export default {
       });
     },
     myDrivingRoute () {
-      console.log("myDrivingRoute执行");
       // selectedIndex 代表 select 当前选中的 option 的 value
       let i = document.getElementById('driving_way').childNodes[1].selectedIndex;
-      console.log(i);
       mySearch.call(this, this.start, this.end, this.routePolicy[i]);
       function mySearch (start, end, routePolicy) {
         let driving = new BMap.DrivingRoute(this.map, {
@@ -538,7 +534,6 @@ export default {
      */
     checkRule: function () {
       let str = new String(this.reourseNum);
-      console.log(str);
       str = str.split('');
       for (let i = 0; i < str.length; i++) {
         let reg = new RegExp(/[0-9]/ig);
@@ -662,7 +657,6 @@ export default {
         // 移除之前的
         this.map.removeOverlay(this.markerArr.shift())
       }
-      console.log('标记最近仓库');
       // let tempArr = window.overlayMarkerArr;
       for (let i = 0; i < this.label_distance.length; i++) {
         let myIcon = new BMap.Icon("https://ythdong.gitee.io/blog_image/Vue/pointArr.png",
