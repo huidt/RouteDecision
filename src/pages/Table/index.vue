@@ -9,6 +9,7 @@
 </template>
 
 <script>
+import { $hPost } from '../../../server/global';
 export default {
   data () {
     return {
@@ -19,21 +20,11 @@ export default {
     this.getWareHousePoi();
   },
   methods: {
-
-    async getWareHousePoi () {
-      try {
-        let url = 'http://yapi.smart-xwork.cn/mock/90376/api/RouteDecision/getWareHousePoi'
-        await fetch(url).then(function (res) {
-          if (!res.ok) {
-            throw new Error('HTTP error, status = ' + res.status);
-          }
-          return res.json();
-        })
-      } catch (err) {
-        this.$message(err || "获取仓库列表失败");
-      }
-
-    }
+    getWareHousePoi () {
+      $hPost('getWareHousePoi', { customerID: '19980914' }).then(res => {
+        this.tableData = res.data;
+      });
+    },
   }
 }
 </script>

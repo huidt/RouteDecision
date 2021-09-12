@@ -452,7 +452,7 @@ export default {
           this.temp = this.label_distance[28];
           break;
         default:
-            this.$$notify('default switch');
+          this.$$notify('default switch');
       }
       this.end = new BMap.Point(this.temp.lng, this.temp.lat);
       let point = this.pointStr.split(',');
