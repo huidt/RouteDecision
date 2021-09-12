@@ -91,7 +91,6 @@ export default {
       this.accidentMaker.enableDragging(); // 标注可拖拽
       this.accidentMaker.addEventListener("dragend", (e) => {
         this.pointStr = e.point.lng + ", " + e.point.lat;
-        console.log('拖动事故点');
       });
     }
   },
@@ -153,7 +152,6 @@ export default {
         // // 拖动事故点，更新 point
         // // point 的变化触发 watch 中的函数，触发 VueX 的 commit
         // this.point = new BMap.Point(x, y);
-        console.log('拖动事故点');
       });
 
       this.initWare();
@@ -178,11 +176,11 @@ export default {
           .then(function (pro) {
             my_style_json = pro;
           })
-          .catch(function (error) {
-            console.log('没找到样式文件\n', error);
+          .catch(function (err) {
+            this.$message(err || '没找到样式文件\n');
           });
-      } catch (error) {
-        console.log('没找到样式文件\n', error);
+      } catch (err) {
+            this.$message(err || '没找到样式文件\n');
       }
       this.map.setMapStyle({
         styleJson: my_style_json

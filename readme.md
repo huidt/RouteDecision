@@ -19,6 +19,7 @@
 - [4. 结合 PSO 算法](#4-结合-pso-算法)
   - [4.1. PSO 简介](#41-pso-简介)
 - [5. 仓储站信息](#5-仓储站信息)
+- [6. git 快捷键](#6-git-快捷键)
 
 # 1. 开始
 
@@ -40,14 +41,14 @@
 ```html
 <script type="text/javascript">
   function initialize() {
-    var mp = new BMap.Map('map')
+    var mp = new BMap.Map("map")
     mp.centerAndZoom(new BMap.Point(121.491, 31.233), 11)
   }
 
   function loadScript() {
-    var script = document.createElement('script')
+    var script = document.createElement("script")
     script.src =
-      'http://api.map.baidu.com/api?v=2.0&ak=***AK***&callback=initialize'
+      "http://api.map.baidu.com/api?v=2.0&ak=***AK***&callback=initialize"
     document.body.appendChild(script)
   }
 
@@ -61,7 +62,7 @@
 module.exports = {
   configureWebpack: {
     externals: {
-      BaiduMap: 'BMap',
+      BaiduMap: "BMap",
     },
   },
 }
@@ -73,7 +74,7 @@ module.exports = {
 
 ```js
 let myIcon = new BMap.Icon(
-  'https://ythdong.gitee.io/blog_image/Vue/warehouse.png',
+  "https://ythdong.gitee.io/blog_image/Vue/warehouse.png",
   new BMap.Size(25, 25),
   {}
 )
@@ -182,7 +183,7 @@ https://lbsyun.baidu.com/index.php?title=webapi
 ```js
 let config_map = {
   offset: new BMap.Size(150, 5),
-  anchor: 'BMAP_ANCHOR_TOP_LEFT',
+  anchor: "BMAP_ANCHOR_TOP_LEFT",
 }
 map.addControl(new BMap.MapTypeControl(config_map))
 map.addControl(new BMap.ScaleControl(config_map))
@@ -236,4 +237,13 @@ map.addControl(new BMap.ScaleControl(config_map))
 |   谭家桥仓储站   |     安徽省黄山市黄山区谭家桥收费站(205 国道西)      | 118.271427,30.170961 |  463  |
 |    三阳仓储站    |     安徽省黄山市歙县三阳收费站(杭徽高速公路北)      | 118.825166,30.04006  |  154  |
 
-demo
+# 6. git 快捷键
+
+```sh
+git st      status
+git co      checkout
+git ci      commit
+git br      branch
+git last    log -1
+git lg      log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+```

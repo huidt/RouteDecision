@@ -30,7 +30,7 @@ export default {
           return res.json();
         })
       } catch (err) {
-        console.log(err);
+        this.$message(err || "获取仓库列表失败");
       }
 
     }
